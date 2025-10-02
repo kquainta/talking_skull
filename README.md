@@ -6,6 +6,12 @@ Arduino sketch to run the Talking Skull project. This repository contains a sing
 - `talking_skull.ino` — main Arduino sketch
 - `.gitignore` — ignores editor files and Arduino build artifacts
 
+## Inventory
+- Arduino Nano
+- KA2284 LED sound meter
+	- (Shout out to jawduino at buttonbanger.com for this solution)
+- Muizei MG90S servos (higher stall torque ~2.0 kg)
+
 ## Quick start
 
 Requirements
