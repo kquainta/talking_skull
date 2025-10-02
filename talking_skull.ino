@@ -6,6 +6,8 @@
 const int servoPin1 = 9;
 const int servoPin2 = 10; // currently unused
 const int servoPin3 = 11; // currently unused
+// On-board LED (also works with external LED on pin 13)
+const int ledPin = 13;
 
 Servo servo1;
 Servo servo2;
@@ -33,6 +35,10 @@ void setup() {
   servo1.attach(servoPin1);
   servo2.attach(servoPin2);
   servo3.attach(servoPin3);
+
+  // LED indicates servo movement
+  pinMode(ledPin, OUTPUT);
+  digitalWrite(ledPin, LOW);
 }
 
 void loop() {
@@ -60,11 +66,20 @@ void loop() {
   Serial.println(audioValue);
 
   // Write jaw value
+  // Turn LED on while servo is driven (audioValue > 0)
+  if (audioValue > 0) {
+    digitalWrite(ledPin, HIGH);
+  } else {
+    digitalWrite(ledPin, LOW);
+  }
+
   servo1.write(audioValue);
   if (audioValue == 45) delay(60);
   if (audioValue == 90) delay(120);
   if (audioValue == 180) delay(320);
 
   servo1.write(0);
+  // servo returned to rest; turn LED off
+  digitalWrite(ledPin, LOW);
   delay(200);
 }
