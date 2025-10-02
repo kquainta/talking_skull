@@ -1,0 +1,13 @@
+# Editor & OS
+.vscode/
+.DS_Store
+
+# Arduino / build artifacts
+build/
+*.hex
+*.elf
+*.bin
+*.eep
+
+# Misc
+*.log
